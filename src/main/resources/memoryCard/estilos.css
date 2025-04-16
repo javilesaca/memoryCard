@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&display=swap'); 
+
+
+.card {
+
+    -fx-border-radius: 10px;
+    -fx-background-image: url("assets/interfaz/reverso.png"); /* URL de la imagen de fondo */
+    -fx-background-size: cover; /* La imagen se ajustará para cubrir todo el fondo */
+    -fx-background-position: center; /* La imagen se posicionará en el centro */
+}
+
+.menuMinion {
+
+    -fx-background-color: white;
+    -fx-background-radius: 10px; /* Radio de fondo para hacerlo redondeado */
+     -fx-border-radius: 30px;
+}
+
+.textmenu {
+    -fx-font-family: "Unkempt", cursive; /* Fuente de texto */
+    -fx-text-fill: white; /* Color del texto */
+    -fx-border-color:  transparent; /* Borde rojo */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-background-insets: 0; /* Eliminar los márgenes de fondo */
+    -fx-effect: dropshadow(three-pass-box, rgba(255,0,0,0.5), 2, 2, 0, 0); /* Sombra gris claro */
+    -fx-font-size: 35px; /* Tamaño de fuente grande */
+    -fx-padding: 0 10px 0 10px; /* Padding: arriba derecha abajo izquierda */
+}
+.background{
+    -fx-background-image: url("assets/interfaz/fondo.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+
+}
+.minion-button {
+    -fx-background-color: #3b5998; /* Color de fondo similar al de los Minions */
+    -fx-text-fill: white; /* Color de texto */
+    -fx-font-family: "Unkempt", cursive; /* Fuente de texto */
+    -fx-font-size: 20px; /* Tamaño de texto */
+    -fx-font-weight: bold; /* Hacer el texto más audaz */
+    -fx-padding: 8px 16px 8px 16px; /* Espaciado interno */
+    -fx-border-radius: 10px; /* Radio de borde para hacerlo redondeado */
+    -fx-background-radius: 15px; /* Radio de fondo para hacerlo redondeado */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0); /* Sombra */
+    -fx-transtion-duration: 1s;
+}
+
+.minion-button:hover {
+    -fx-background-color: whitesmoke;
+     -fx-text-fill: #3b5998; /* Color de texto */
+    -fx-color: rgba(255, 255, 255, 0.9) !important;
+    -fx-effect: dropshadow(three-pass-box, rgba(49, 138, 172, 1), 20,0,0,0);
+    /* Sombra gris claro */
+    -fx-transition: all 0.2s ease;
+}
+
+.minion-button-salir {
+    -fx-background-color: #a92726; /* Color de fondo */
+    -fx-text-fill: white; /* Color de texto */
+    -fx-font-family: "Unkempt", cursive; /* Fuente de texto */
+    -fx-font-size: 20px; /* Tamaño de texto */
+    -fx-font-weight: bold; /* Hacer el texto más audaz */
+    -fx-padding: 8px 16px 8px 16px; /* Espaciado interno */
+    -fx-border-radius: 10px; /* Radio de borde para hacerlo redondeado */
+    -fx-background-radius: 15px; /* Radio de fondo para hacerlo redondeado */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0); /* Sombra */
+    -fx-transtion-duration: 1s;
+}
+
+.minion-button-salir:hover {
+    -fx-background-color: whitesmoke;
+     -fx-text-fill: #a92726; /* Color de texto */
+    -fx-color: rgba(255, 255, 255, 0.9) !important;
+    -fx-effect: dropshadow(three-pass-box, rgba(169, 39, 38, 1), 20,0,0,0);
+    /* Sombra gris claro */
+    -fx-transition: all 0.2s ease;
+}
+
+
+.textMarcadores {
+    -fx-font-family: "Unkempt", cursive; /* Fuente de texto */
+    -fx-text-fill: white; /* Color del texto */
+    -fx-border-color:  transparent; /* Borde rojo */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-background-insets: 0; /* Eliminar los márgenes de fondo */
+    -fx-effect: dropshadow(three-pass-box, rgba(255,0,0,0.5), 2, 2, 0, 0); /* Sombra gris claro */
+    -fx-alignment: center; /* Centrar el texto */
+    -fx-font-size: 27px; /* Tamaño de fuente grande */
+
+}
