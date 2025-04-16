@@ -259,7 +259,7 @@ public class MemoriaController implements Initializable {
             reproducirSonido("victoria.mp3");
 
             // Mostrar imagen de victoria
-            String rutaImagenVictoria = "memoryCard/assets/interfaz/victoria.png"; // Ruta de la imagen
+            String rutaImagenVictoria = "/memoryCard/assets/interfaz/victoria.png"; // Ruta de la imagen
             Image imagenVictoria = new Image(getClass().getResourceAsStream(rutaImagenVictoria));
             imagenFinal.setImage(imagenVictoria);
             imagenFinal.setVisible(true);
