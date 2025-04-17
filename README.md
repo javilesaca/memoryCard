@@ -24,7 +24,7 @@ Navegar al directorio del proyecto:
 cd memoryCard
 ```
 
-Ejecutar el proyecto en un entorno Java compatible con JavaFX. Si estás usando IntelliJ IDEA o Eclipse, solo debes ejecutar el archivo ´´´Principal.java´´´.
+Ejecutar el proyecto en un entorno Java compatible con JavaFX. Si estás usando IntelliJ IDEA o Eclipse, solo debes ejecutar el archivo ```Principal.java```.
 
 ---
 
