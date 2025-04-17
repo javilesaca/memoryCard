@@ -14,16 +14,16 @@ CSS para el diseño y estilo de la interfaz.
 
 Clonar el repositorio:
 
-bash
-Copiar
-Editar
+```bash
 git clone https://github.com/javilesaca/memoryCard.git
+```
+
 Navegar al directorio del proyecto:
 
-bash
-Copiar
-Editar
+```bash
 cd memoryCard
+```
+
 Ejecutar el proyecto en un entorno Java compatible con JavaFX. Si estás usando IntelliJ IDEA o Eclipse, solo debes ejecutar el archivo principal.
 
 ---
