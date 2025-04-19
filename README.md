@@ -37,3 +37,22 @@ Ejecutar el proyecto en un entorno Java compatible con JavaFX. Si estás usando 
 ## 📝 Licencia
 
 Este proyecto está licenciado bajo la MIT License.
+
+---
+
+# 🌐 Versión Web Disponible
+
+¡Ahora también puedes jugar al Memory Card Game directamente desde tu navegador con estilo arcade clásico y tecnología web moderna!
+La versión web ha sido desarrollada con:
+
+HTML5, CSS3 (con efecto glow retro), y JavaScript
+
+Supabase como backend para almacenamiento de puntuaciones y ranking
+
+Diseño responsive para jugar desde cualquier dispositivo
+
+Ranking online y sistema de iniciales tipo arcade para registrar tu puntuación
+
+👉 Juega ahora: https://javilesaca.pro/memorycard
+
+
