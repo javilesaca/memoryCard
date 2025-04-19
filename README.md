@@ -53,6 +53,6 @@ Diseño responsive para jugar desde cualquier dispositivo
 
 Ranking online y sistema de iniciales tipo arcade para registrar tu puntuación
 
-👉 Juega ahora: https://javilesaca.pro/memorycard
+👉 Juega ahora: https://javilesaca.pro/memoryCard/
 
 
