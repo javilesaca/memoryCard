@@ -1,0 +1,98 @@
+name: Build native installers
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            pkg: deb
+            jpackage-extra: --linux-shortcut --linux-menu-group Games
+          - os: windows-latest
+            pkg: exe
+            jpackage-extra: --win-shortcut --win-menu --win-menu-group Games
+          - os: macos-latest
+            pkg: dmg
+            jpackage-extra: ""
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21 (Temurin, includes jlink + jpackage)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Install WiX (Windows installer toolchain)
+        if: runner.os == 'Windows'
+        run: choco install wixtoolset --no-progress -y
+
+      - name: Build runtime image
+        run: mvn -B clean package javafx:jlink
+
+      - name: Resolve app version
+        id: version
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "app_version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "app_version=1.0.0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build installer with jpackage
+        shell: bash
+        run: >
+          jpackage
+          --type ${{ matrix.pkg }}
+          --name memory-card
+          --app-version ${{ steps.version.outputs.app_version }}
+          --vendor "Javier Lesaca"
+          --description "Classic concentration memory card game (JavaFX)"
+          --copyright "MIT"
+          --license-file LICENSE
+          --module memory.card/memoryCard.Principal
+          --runtime-image target/image
+          --dest target/dist
+          ${{ matrix.jpackage-extra }}
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: memory-card-${{ matrix.pkg }}
+          path: target/dist/*
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download installers
+        uses: actions/download-artifact@v4
+        with:
+          path: installers
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          gh release create "$GITHUB_REF_NAME"
+          installers/*
+          --title "Memory Card $GITHUB_REF_NAME"
+          --notes "Native installers with bundled Java 21 runtime, no Java install needed. Desktop sibling of memorycard-web."
