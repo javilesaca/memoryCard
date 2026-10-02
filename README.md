@@ -8,9 +8,9 @@
 
 | Sistema | Archivo |
 |---|---|
-| Windows | `memory-card-1.0.0.exe` |
-| macOS | `memory-card-1.0.0.dmg` |
-| Linux | `memory-card_1.0.0_amd64.deb` |
+| Windows | `memory-card-1.0.1.exe` |
+| macOS | `memory-card-1.0.1.dmg` |
+| Linux | `memory-card_1.0.1_amd64.deb` |
 
 Cada instalador lleva el runtime Java 21 empaquetado: doble clic y a jugar.
 
