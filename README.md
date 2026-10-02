@@ -2,6 +2,18 @@
 
 ¡Bienvenido al Memory Card Game! Un clásico juego de cartas de memoria implementado en Java usando JavaFX para la interfaz gráfica. El objetivo del juego es emparejar las cartas lo más rápido posible.
 
+## ⬇️ Descargar y jugar (sin instalar Java)
+
+👉 **[Última release con instaladores](https://github.com/javilesaca/memoryCard/releases/latest)**
+
+| Sistema | Archivo |
+|---|---|
+| Windows | `memory-card-1.0.0.exe` |
+| macOS | `memory-card-1.0.0.dmg` |
+| Linux | `memory-card_1.0.0_amd64.deb` |
+
+Cada instalador lleva el runtime Java 21 empaquetado: doble clic y a jugar.
+
 ## 🖥️ Tecnologías Utilizadas
 
 Java y JavaFX para la lógica y la interfaz gráfica.
