@@ -45,9 +45,9 @@ Este proyecto está licenciado bajo la MIT License.
 ¡Ahora también puedes jugar al Memory Card Game directamente desde tu navegador con estilo arcade clásico y tecnología web moderna!
 La versión web ha sido desarrollada con:
 
-HTML5, CSS3 (con efecto glow retro), y JavaScript
+HTML5, CSS3 (Grid + efecto glow retro) y JavaScript ES6+ sin bundler — [repo web](https://github.com/javilesaca/memorycard-web)
 
-Supabase como backend para almacenamiento de puntuaciones y ranking
+Firebase Firestore como backend para almacenamiento de puntuaciones y ranking (migrado desde Supabase, cuyo plan gratuito pausaba la BD por inactividad), con fallback a localStorage
 
 Diseño responsive para jugar desde cualquier dispositivo
 
