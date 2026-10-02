@@ -4,18 +4,41 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pro.javilesaca</groupId>
-  <artifactId>Memory_Card_Game</artifactId>
-  <version>0.0.0-SNAPSHOT</version>
-  <name>Archetype - Memory_Card_Game</name>
-  <url>http://maven.apache.org</url>
+  <artifactId>memory-card</artifactId>
+  <version>1.0.0</version>
+  <name>Memory Card Game</name>
+  <description>Classic concentration/memory card game built with Java 21 + JavaFX. Desktop sibling of memorycard-web.</description>
+  <url>https://github.com/javilesaca/memoryCard</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <javafx.version>21.0.2</javafx.version>
+    <!-- Overridden per-OS by the profiles below; defaults to linux. -->
     <javafx.platform>linux</javafx.platform>
   </properties>
+
+  <profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os><family>windows</family></os>
+      </activation>
+      <properties>
+        <javafx.platform>win</javafx.platform>
+      </properties>
+    </profile>
+    <profile>
+      <id>mac</id>
+      <activation>
+        <os><family>mac</family></os>
+      </activation>
+      <properties>
+        <javafx.platform>mac</javafx.platform>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
@@ -66,12 +89,5 @@
 
     </plugins>
   </build>
-
-  <repositories>
-    <repository>
-      <id>central</id>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-  </repositories>
 
 </project>

@@ -75,18 +75,12 @@ public class MemoriaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        juego = new JuegoMemoria(); // instanciación del juego (esta instancia gestionará el estado de juego)
-        juego.iniciarJuego();       // comienzo de una nueva partida
         cartas = new ArrayList<>(); // inicialización del ArrayList de referencias a cartas @FXML
 
         // guarda en el ArrayList "cartas" todas las referencias @FXML a las cartas para gestionarlo cómodamente
         cartas.addAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16));
 
-        // Inicialización de todos los aspectos necesarios
-        intentos.setText("0"); //pongo el campo de los intentos a 0
-        tiempo.setText("0"); ////pongo el campo del tiempo a 0
-
-        // Inicialización del contador de tiempo de la partida
+        // El contador se crea una sola vez; cada partida lo rearranca con playFromStart().
         contadorTiempo = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             // Incrementa los segundos
             segundos++;
@@ -95,11 +89,45 @@ public class MemoriaController implements Initializable {
 
         }));
         contadorTiempo.setCycleCount(Timeline.INDEFINITE);  // reproducción infinita
-        contadorTiempo.playFromStart();// iniciar el contador en este momento
 
-        // metodo que inicia música de fondo para que se reproduzca cuando se inicia el juego
+        nuevaPartida();
+    }
+
+    /**
+     * Prepara y arranca una partida nueva: estado del modelo, cartas,
+     * marcadores, temporizador y música. Se usa tanto al arrancar la app
+     * (desde {@link #initialize}) como desde el botón Comenzar.
+     */
+    private void nuevaPartida() {
+        juego = new JuegoMemoria(); // instanciación del juego (esta instancia gestionará el estado de juego)
+        juego.iniciarJuego();       // comienzo de una nueva partida
+
+        // Reiniciar estado del intento en curso
+        primerBotonPulsado = false;
+        segundoBotonPulsado = false;
+
+        // Reiniciar marcadores
+        intento = 0;
+        intentos.setText("0");
+        segundos = 0;
+        tiempo.setText("0");
+
+        // Ocultar la imagen de victoria de la partida anterior, si la hubo
+        imagenFinal.setVisible(false);
+
+        /* hacer visibles las 16 cartas de juego ya que es posible que no todas estén visibles
+           si se encontraron parejas en la partida anterior */
+        for (Button carta : cartas) {
+            carta.setVisible(true);
+            carta.setDisable(false); // Habilitar las cartas
+            carta.setMouseTransparent(false);
+            carta.setGraphic(null);
+        }
+
+        // Reiniciar música de fondo y contador de tiempo
+        detenerMusica();
         reproducirMusica();
-
+        contadorTiempo.playFromStart();
     }
 
     /**
@@ -113,40 +141,7 @@ public class MemoriaController implements Initializable {
      */
     @FXML
     private void reiniciarJuego(ActionEvent event) {
-
-        // detener el contador de tiempo 
-        contadorTiempo.stop();
-        
-        //detener la reproducción de la música de fondo
-        detenerMusica();
-
-        //ocultar la imagenfinal
-        imagenFinal.setVisible(false);
-
-        // Restablecer los valores de la partida
-        juego.iniciarJuego();
-
-        /* hacer visibles las 16 cartas de juego ya que es posible que no todas estén visibles 
-           si se encontraron parejas en la partida anterior */
-        for (Button carta : cartas) {
-            carta.setVisible(true);
-            carta.setDisable(false); // Habilitar las cartas
-            carta.setGraphic(null);
-        }
-
-        // Reiniciar el tiempo transcurrido
-        segundos = 0;
-
-        tiempo.setText("0");
-
-        // Reiniciar el número de intentos
-        intento = 0;
-        
-        intentos.setText("0");
-
-
-        // llamar al método initialize para terminar de configurar la nueva partida
-        initialize(null, null);
+        nuevaPartida();
     }
 
     /**
@@ -177,7 +172,11 @@ public class MemoriaController implements Initializable {
             carta.setMouseTransparent(true);
 
         } else if (!segundoBotonPulsado) {
-            //finIntento.play();
+            // Misma carta dos veces (p. ej. vía teclado con foco+espacio):
+            // no es una jugada válida, se ignora sin contar intento.
+            if (indiceCarta == idBoton1) {
+                return;
+            }
             segundoBotonPulsado = true;
             idBoton2 = indiceCarta;
             // Desactivará para eventos de ratón para todas las cartas para evitar que se puedan pulsar

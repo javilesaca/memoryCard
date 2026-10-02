@@ -40,6 +40,11 @@ public class JuegoMemoria {
     public boolean compruebaJugada(int indice1, int indice2) {
         boolean parejaEncontrada = false;
 
+        // La misma posición dos veces nunca es pareja (defensa ante doble activación).
+        if (indice1 == indice2) {
+            return false;
+        }
+
         if (this.tablero.get(indice1).equals(this.tablero.get(indice2))) {
             this.tablero.set(indice1, "-"); // pareja encontrada en indice1 (se coloca - en la casilla)
             this.tablero.set(indice2, "-"); // pareja encontrada en indice2 (se coloca - en la casilla)
