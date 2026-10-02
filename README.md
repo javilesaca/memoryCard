@@ -14,6 +14,10 @@
 
 Cada instalador lleva el runtime Java 21 empaquetado: doble clic y a jugar.
 
+## 🎬 Demo
+
+![Demo del juego en escritorio](assets/demo.gif)
+
 ## 🖥️ Tecnologías Utilizadas
 
 Java y JavaFX para la lógica y la interfaz gráfica.
