@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="tablero" fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="620.0" styleClass="background" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="memoryCard.MemoriaController">
+<AnchorPane id="tablero" fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="620.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="memoryCard.MemoriaController">
    <children>
       <GridPane fx:id="tablero" alignment="CENTER" hgap="10.0" layoutY="5.0" prefHeight="515.0" prefWidth="410.0" vgap="10.0">
         <columnConstraints>
@@ -55,18 +55,14 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
          <children>
-            <ImageView fitHeight="189.0" fitWidth="236.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/memoryCard/assets/interfaz/logoApp.png" />
-               </image>
-            </ImageView>
-            <Label prefHeight="15.0" prefWidth="169.0" styleClass="textmenu" text="Intentos:" textFill="#dfcd80">
+            <ImageView fx:id="logo" fitHeight="150.0" fitWidth="180.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+            <Label prefHeight="40.0" prefWidth="184.0" styleClass="textmenu" text="Intentos:" textFill="#dfcd80">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
             <Label fx:id="intentos" prefHeight="42.0" prefWidth="184.0" styleClass="textMarcadores" />
-            <Label layoutX="15.0" layoutY="198.0" prefHeight="15.0" prefWidth="169.0" styleClass="textmenu" text="Tiempo:" textFill="#dfcd80">
+            <Label layoutX="15.0" layoutY="198.0" prefHeight="40.0" prefWidth="184.0" styleClass="textmenu" text="Tiempo:" textFill="#dfcd80">
                <font>
                   <Font size="22.0" />
                </font>
@@ -77,7 +73,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="salir" alignment="CENTER" layoutX="15.0" layoutY="391.0" mnemonicParsing="false" onAction="#salir" prefHeight="0.0" prefWidth="190.0" styleClass="minion-button-salir" text="Salir del juego" />
+            <Button fx:id="salir" alignment="CENTER" layoutX="15.0" layoutY="391.0" mnemonicParsing="false" onAction="#salir" prefHeight="38.0" prefWidth="190.0" styleClass="minion-button-salir" text="Salir del juego" />
          </children>
       </VBox>
       <ImageView fx:id="imagenFinal" fitHeight="515.0" fitWidth="408.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" visible="false">

@@ -54,6 +54,8 @@ public class MemoriaController implements Initializable {
     private Button salir;
     @FXML
     private ImageView imagenFinal; // ImageView para mostrar la imagen final
+    @FXML
+    private ImageView logo; // Logo de la cabecera (se carga por código: las rutas @ del FXML no resuelven en imágenes jlink/jpackage)
 
     // Crea un objeto Media 
     private MediaPlayer reproductor;
@@ -79,6 +81,17 @@ public class MemoriaController implements Initializable {
 
         // guarda en el ArrayList "cartas" todas las referencias @FXML a las cartas para gestionarlo cómodamente
         cartas.addAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16));
+
+        // Logo cargado por código con getResourceAsStream (mismo módulo: funciona en classpath y en imagen jlink).
+        try (var in = getClass().getResourceAsStream("/memoryCard/assets/interfaz/logoApp.png")) {
+            if (in != null) {
+                logo.setImage(new Image(in));
+            } else {
+                System.out.println("Logo no encontrado en classpath.");
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo cargar el logo: " + e.getMessage());
+        }
 
         // El contador se crea una sola vez; cada partida lo rearranca con playFromStart().
         contadorTiempo = new Timeline(new KeyFrame(Duration.seconds(1), event -> {

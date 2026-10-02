@@ -1,5 +1,14 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&display=swap'); 
+/* Unkempt bundled locally (assets/fonts): JavaFX CSS cannot @import remote fonts. */
+@font-face {
+    font-family: "Unkempt";
+    src: url("assets/fonts/Unkempt-Regular.ttf");
+}
+@font-face {
+    font-family: "Unkempt";
+    font-weight: bold;
+    src: url("assets/fonts/Unkempt-Bold.ttf");
+}
 
 
 .card {
